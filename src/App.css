@@ -1,0 +1,122 @@
+.element {
+    margin: 2em 0.5em;
+    width: 400px;
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    position: relative;
+    z-index: 90;
+}
+
+.element > label {
+    font-size: 0.9rem;
+}
+
+input[type='text'],
+input[type='number'] {
+    padding: 0.5em;
+    width: 100%;
+    background-color: var(--neutral-100);
+    color: var(--neutral-900);
+    font-size: 0.9rem;
+    border: 1px solid var(--neutral-200);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 120ms ease;
+}
+
+input[type='text']:focus,
+input[type='number']:focus {
+    border-color: hsl(207, 73%, 57%);
+}
+
+.select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 38px;
+    padding: 0.5em;
+    background-color: var(--neutral-100);
+    color: var(--neutral-900);
+    font-size: 0.9rem;
+    border: 1px solid var(--neutral-200);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.select::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--neutral-900);
+    border-right: 1px solid var(--neutral-900);
+    transform: translate(-15px, -60%) rotate(135deg);
+}
+
+.select-selected {
+    width: calc(100% - 25px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select-options {
+    position: absolute;
+    z-index: 9999;
+    top: calc(100% + 2px);
+    left: 0;
+    padding: 0.4em;
+    max-height: 220px;
+    width: calc(100% + 1px);
+
+    /* background-color: var(--neutral-100); */
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transform-origin: top;
+    transition: transform 90ms ease-in, opacity 90ms ease-in, visibility 90ms ease-in;
+}
+
+.select-options.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.select-options ul {
+    height: 210px;
+    overflow: auto;
+}
+
+.select-options li {
+    position: relative;
+    padding: 0.6em;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: background-color 90ms ease-in;
+}
+
+.select-options li:hover {
+    background-color: var(--neutral-300);
+}
+
+.select-options li.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 7px;
+    border-top: 1px solid var(--neutral-900);
+    border-right: 1px solid var(--neutral-900);
+    transform: translate(-10px, 150%) rotate(135deg);
+}
