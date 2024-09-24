@@ -112,13 +112,16 @@ select {
     color: var(--neutral-700);
 }
 
-/* * {
+* {
     scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
-} */
+    scrollbar-color: var(--neutral-400) transparent;
+}
+
+*:hover {
+    scrollbar-color: var(--neutral-500) transparent;
+}
 
 ::-webkit-scrollbar {
-    display: none;
     width: 7px;
     height: 7px;
 }

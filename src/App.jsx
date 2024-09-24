@@ -7,15 +7,17 @@ function Select(props) {
     const selectedOption = options.filter((p) => p.selected);
 
     return (
-        <div
-            className='select'
-            onClick={(e) => {
-                e.stopPropagation();
-                setOpen((p) => !p);
-            }}
-        >
-            <div className='select-selected'>
-                {selectedOption.length > 0 ? selectedOption.map((v) => v.text).join(', ') : 'Select an option'}
+        <>
+            <div
+                className='select'
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setOpen((p) => !p);
+                }}
+            >
+                <div className='select-selected'>
+                    {selectedOption.length > 0 ? selectedOption.map((v) => v.text).join(', ') : 'Select an option'}
+                </div>
             </div>
             <div className={`select-options${open ? ' open' : ''}`}>
                 <ul>
@@ -41,7 +43,7 @@ function Select(props) {
                     ))}
                 </ul>
             </div>
-        </div>
+        </>
     );
 }
 
