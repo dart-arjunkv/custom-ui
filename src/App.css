@@ -19,7 +19,7 @@ input[type='text'],
 input[type='number'] {
     padding: 0.5em;
     width: 100%;
-    background-color: var(--neutral-100);
+    /* background-color: var(--neutral-100); */
     color: var(--neutral-900);
     font-size: 0.9rem;
     border: 1px solid var(--neutral-200);
@@ -36,22 +36,42 @@ input[type='number']:focus {
     outline-offset: 0.2px;
 }
 
-.select {
+.select-cont {
+    position: relative;
+    z-index: 10;
+}
+
+.dropdown {
+    position: relative;
+    border: 1px solid var(--neutral-200);
+    border-radius: 4px;
+    outline: 1px solid transparent;
+    outline-offset: 0;
+    transition: border-color 120ms ease-in, outline-color 120ms ease-in, outline-offset 120ms ease-in;
+}
+
+.dropdown-toggle {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
     height: 38px;
     padding: 0.5em;
-    background-color: var(--neutral-100);
+    /* background-color: var(--neutral-100); */
     color: var(--neutral-900);
     font-size: 0.9rem;
-    border: 1px solid var(--neutral-200);
-    border-radius: 4px;
+    /* border: 1px solid var(--neutral-200);
+    border-radius: 4px; */
     cursor: pointer;
 }
 
-.select::after {
+.dropdown:focus {
+    border-color: hsl(207, 73%, 57%);
+    outline-color: hsl(207, 73%, 57%);
+    outline-offset: 0.2px;
+}
+
+.dropdown-toggle::after {
     content: '';
     position: absolute;
     right: 0;
@@ -63,14 +83,14 @@ input[type='number']:focus {
     transform: translate(-15px, -60%) rotate(135deg);
 }
 
-.select-selected {
+.dropdown-selected {
     width: calc(100% - 25px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.select-options {
+.dropdown-options {
     position: absolute;
     z-index: 9999;
     top: calc(100% + 2px);
@@ -79,40 +99,38 @@ input[type='number']:focus {
     max-height: 220px;
     width: calc(100% + 1px);
 
-    /* background-color: var(--neutral-100); */
+    background-color: white;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.9);
-    transform-origin: top;
-    transition: transform 90ms ease-in, opacity 90ms ease-in, visibility 90ms ease-in;
+    /* opacity: 0; */
+    /* visibility: hidden; */
 }
 
-.select-options.open {
+.dropdown[data-open='true'] > .dropdown-options {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
 }
 
-.select-options ul {
+.dropdown-options ul {
     height: 210px;
     overflow: auto;
 }
 
-.select-options li {
+.dropdown-options li {
     position: relative;
     padding: 0.6em;
     border-radius: 4px;
     font-size: 0.8rem;
+    background-color: white;
+    cursor: pointer;
     transition: background-color 90ms ease-in;
 }
 
-.select-options li:hover {
+.dropdown-options li:hover {
     background-color: var(--neutral-300);
 }
 
-.select-options li.selected::after {
+.dropdown-options li.selected::after {
     content: '';
     position: absolute;
     top: 0;
